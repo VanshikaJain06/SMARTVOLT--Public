@@ -1,0 +1,46 @@
+
+<div class="grid_container">
+
+  <!-- grid dashboard -->
+  <div class="banner">
+    <h1>{{page_title}}</h1>
+    <span class="material-icons arrow_back" *ngIf="pages[1]" (click)="back()">
+      arrow_back
+    </span>
+  </div>
+
+  <div class="grid_page1" *ngIf="pages[0]">
+    <h1>Request</h1>
+    <h4>{{open_req}} opened by others</h4>
+    <h4>{{accepted_req}} accepted by others</h4>
+    <h4>{{completed_req}} completed by others</h4>
+    <button type="button" id="view" class="btn btn-primary btn2" role="button" (click)="viewRequests()">View All</button>
+  </div>
+
+  <!-- view request -->
+  <div class="grid_page2" *ngIf="pages[1]">
+    <div class="card" *ngFor="let req of requests">
+      <div class="card-body">
+        <div class="left">
+          <p>Request ID: {{req.request_id}}</p>
+          <h5><ng-container *ngFor="let com of companies"><ng-container *ngIf="(com.com_id == req.com_id)">{{com.com_name}}</ng-container></ng-container></h5>
+          <h5><ng-container *ngFor="let station of stations"><ng-container *ngIf="(station.station_id == req.station_id)">{{station.station_location}}</ng-container></ng-container> station requesting for {{req.requested_supply}}KW</h5>
+          <h5>currently at {{req.curr_station_supply}}KW</h5>
+          <h6>Requested at: {{req.request_time | date: "dd-MM-YYYY hh:mm:ss"}}</h6>
+        </div>
+        <div class="right">
+          <p class="card-text">Status {{req.request_status}}</p>
+          <span class="material-icons delete" *ngIf="(req.request_status == 'open') || (req.request_status == 'accepted')" (click)="delete(req)">
+            delete
+          </span>
+          <span class="material-icons edit" *ngIf="(req.request_status == 'completed')">
+            done
+          </span>
+          <span class="material-icons edit" *ngIf="(req.request_status == 'canceled')">
+            close
+          </span>
+        </div>
+      </div>
+    </div>
+</div>
+

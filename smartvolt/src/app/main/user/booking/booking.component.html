@@ -1,0 +1,79 @@
+
+<div class="booking_container">
+  <div class="bg_img" *ngIf="pages[1] || pages[2]"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+  <div class="banner">
+    <h1>{{page_title}}</h1>
+    <button type="button" class="btn btn-primary" (click)="bookNow()" *ngIf="pages[0]">Book Now</button>
+  </div>
+
+  <div class="page1" *ngIf="pages[0]">
+
+    <div class="card" *ngFor="let booking of bookings">
+      <div class="card-body">
+        <div class="left">
+          <p>Booking ID: {{booking.booking_id}}</p>
+          <h5>Charge {{booking.registration_no}} at {{booking.station_location}}</h5>
+          <h6>Time: {{booking.time}}</h6>
+        </div>
+        <div class="right">
+          <p class="card-text">Status {{booking.booking_status}}</p>
+          <div class="options" *ngIf="(booking.booking_status == 'confirmed') ||  (booking.booking_status == 'updated')">
+            <span class="material-icons edit" (click)="complete(booking.booking_id)">
+              check_circle
+            </span>
+            <span class="material-icons edit" (click)="update(booking.booking_id)">
+              edit
+            </span>
+            <span class="material-icons delete" (click)="delete(booking.booking_id)">
+              delete
+            </span>
+          </div>
+          <span class="material-icons edit" *ngIf="(booking.booking_status == 'completed')">
+            done
+          </span>
+          <span class="material-icons edit" *ngIf="(booking.booking_status == 'canceled')">
+            close
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" *ngIf="pages[1] || pages[2]" [formGroup]="bookingForm">
+    <h4 *ngIf="pages[2]">Booking ID: {{booking_id}}</h4>
+    <form>
+      <div>
+        <label for="user_ev">Book for your EV</label>
+        <select id="user_ev" formControlName="user_ev_id" (ngModelChange)="setUserEV($event)">
+          <option *ngFor="let ev of evs"  [value]="ev.user_ev_id">{{ev.registration_no}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="station">at station</label>
+        <select id="station" formControlName="station_id" (ngModelChange)="setStation($event)">
+          <option *ngFor="let station of stations"  [value]="station.station_id">{{station.station_location}}</option>
+        </select>
+        <label for="station_evse">EVSE</label>
+        <select id="station_evse" formControlName="station_evse_id">
+          <option *ngFor="let evse of station_evses"  [value]="evse.station_evse_id">{{evse.station_evse_id}}</option>
+        </select>
+      </div>
+      <div>
+        <label for="time_from">from</label>
+        <select id="time_from" formControlName="slot_from">
+          <option *ngFor="let slot of timeslots"  [value]="slot.slot_id">{{slot.from_time}}</option>
+        </select>
+        <label for="time_to">to</label>
+        <select id="time_to" formControlName="slot_to">
+          <option *ngFor="let slot of timeslots"  [value]="slot.slot_id">{{slot.to_time}}</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn btn-primary" (click)="confirmBooking(bookingForm.value)" *ngIf="pages[1]" [disabled]="!bookingForm.valid">Book</button>
+        <button type="button" class="btn btn-primary" (click)="updateBooking(bookingForm.value)" *ngIf="pages[2]" [disabled]="!bookingForm.valid">Update</button>
+        <button type="button" class="btn btn-primary btn2" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+</div>

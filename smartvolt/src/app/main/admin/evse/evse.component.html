@@ -1,0 +1,87 @@
+
+
+<div class="evsese_container">
+  <div class="bg_img" *ngIf="pages[1] || pages[2]"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+  <div class="banner">
+    <h1>{{page_title}}</h1>
+    <button type="button" class="btn btn-primary" (click)="addEVSE()" *ngIf="pages[0]">Add EVSE</button>
+  </div>
+
+  <div class="page1" *ngIf="pages[0]">
+    <div class="card" *ngFor="let evse of evses">
+      <div class="card-body">
+        <div class="left">
+          <p>EV ID: {{evse.evse_id}}</p>
+          <h5>{{evse.evse_name}} - {{evse.evse_model}}</h5>
+          <p>Manufacturer: {{evse.evse_company}}</p>
+        </div>
+        <div class="right">
+          <div>
+            <h6>Port1: {{evse.evse_port1.port_name}}</h6>
+            <h6>Port2: {{evse.evse_port2.port_name}}</h6>
+          </div>
+         <div class="options">
+          <span class="material-icons edit" (click)="update(evse.evse_id)">
+            edit
+          </span>
+          <span class="material-icons delete" (click)="delete(evse.evse_id)">
+            delete
+          </span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" *ngIf="pages[1] || pages[2]" [formGroup]="evseForm">
+    <div class="page2_left">
+      <h4 *ngIf="pages[2]">EVSE ID: {{evse_id}}</h4>
+      <form>
+        <div>
+          <label for="evse_name">EVSE Name</label>
+          <input type="text" formControlName="evse_name" id="evse_name">
+        </div>
+        <div>
+          <label for="evse_model">Model</label>
+          <input type="text" formControlName="evse_model" id="evse_model">
+        </div>
+        <div>
+          <label for="evse_company">Company</label>
+          <input type="text" formControlName="evse_company" id="evse_company" (keypress)="keyPressAlpha($event)">
+        </div>
+        <div>
+          <label for="evse_port1">Port 1</label>
+          <select id="evse_port1" formControlName="evse_port1" (ngModelChange)="showPort($event)">
+            <option *ngFor="let port of ports"  [value]="port.port_id">{{port.port_name}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="evse_port2">Port 2</label>
+          <select id="evse_port2" formControlName="evse_port2" (ngModelChange)="showPort($event)">
+            <option *ngFor="let port of ports"  [value]="port.port_id">{{port.port_name}}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="page2_right">
+      <div class="info_page" *ngIf="info_page">
+        <h3 class="mb-3">Port Info</h3>
+        <ul>
+          <li>Name: <b>{{port.port_name}}</b></li>
+          <li>Type: <b>{{port.port_type}}</b></li>
+          <li>Power Supply: <b>{{port.port_powersupply}}W/Hr</b></li>
+        </ul>
+      </div>
+    </div>
+
+      <div class="buttons">
+        <button type="button" class="btn btn-primary" (click)="confirmEVSE(evseForm.value)" *ngIf="pages[1]" [disabled]="!evseForm.valid">Add</button>
+        <button type="button" class="btn btn-primary" (click)="updateEVSE(evseForm.value)" *ngIf="pages[2]" [disabled]="!evseForm.valid">Update</button>
+        <button type="button" class="btn btn-primary btn2" (click)="cancel()">Cancel</button>
+      </div>
+
+  </div>
+
+</div>
+

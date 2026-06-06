@@ -1,0 +1,37 @@
+<div class="battery_container">
+  <div class="bg_img"><img src="../../assets/img/battery.jpg" alt="battery img"></div>
+
+  <h1>Battery</h1>
+  <h4>{{curr_evBat.registration_no}}</h4>
+
+  <div class="battery_details">
+    <div class="battery_details">
+      <span class="material-icons" (click)="prev_bat()">navigate_before</span>
+      <div class="battery_left mx-3">
+        <ul>
+          <li>Name: <b>{{curr_evBat.battery.bat_name}}</b></li>
+          <li>Manufacture: <b>{{curr_evBat.battery.bat_manufacturer}}</b></li>
+          <li>Capacity: <b>{{curr_evBat.battery.bat_capacity}}W</b></li>
+          <li>Type: <b>{{curr_evBat.battery.bat_type}}</b></li>
+          <li>Charging Rate: <b>{{curr_evBat.battery.bat_chargingrate}}W/min</b></li>
+          <li>Discharging Rate: <b>{{curr_evBat.battery.bat_dischargingrate}}W/min</b></li>
+          <li>Hrs per full charge: <b>{{curr_evBat.battery.bat_hours}} Hrs</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="battery_details">
+      <div class="battery_right mx-3">
+        <div class="info">
+          <h4>Battery at</h4>
+          <p>{{curr_evBat.user_battery.remaining_charge}}%</p>
+        </div>
+        <div class="info">
+          <h4>Estimated Distance</h4>
+          <p>{{curr_evBat.user_battery.estimated_distance}}Km</p>
+        </div>
+      </div>
+      <span class="material-icons" (click)="next_bat()">navigate_next</span>
+    </div>
+  </div>
+</div>

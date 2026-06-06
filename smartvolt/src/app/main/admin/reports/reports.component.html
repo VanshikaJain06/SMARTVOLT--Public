@@ -1,0 +1,28 @@
+
+<div class="reports_container">
+  <div class="banner">
+    <h1>Reports</h1>
+  </div>
+
+  <div class="page1">
+    <div class="card" *ngFor="let report of reports">
+      <div class="card-body">
+        <div class="left">
+          <p>Report ID: {{report.report_id}}</p>
+          <h5>From {{report.report_from}}</h5>
+          <h6>Time: {{report.report_time | date: "dd-MM-YYYY HH:mm:ss"}}</h6>
+          <p>{{report.report_description}}</p>
+        </div>
+        <div class="right">
+          <p>Status {{report.report_status}}</p>
+          <span class="material-icons edit" *ngIf="(report.report_status == 'submitted')" (click)="update(report.report_id)">
+            edit
+          </span>
+          <span class="material-icons edit" *ngIf="(report.report_status == 'acknowledged')">
+            check_circle
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

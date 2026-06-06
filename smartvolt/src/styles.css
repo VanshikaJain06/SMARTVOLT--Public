@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+  --hover-color: #9384e9;
+  --ev-green: #29bf12;
+}
+
+*{
+  color: #393636;
+}
+
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+img{
+  width: 100%;
+}
+.smartvolt{
+  color: #000000;
+  font-size: 2rem;
+  text-decoration: none;
+}
+.smartvolt span{
+  color: var(--ev-green);
+}
+.material-icons{
+  color: #000000;
+}
+a:hover, .material-icons:hover, .smartvolt:hover{
+  color: var(--hover-color);
+  cursor: pointer;
+}
+
+.mat-snack-bar-container {
+  background-color: var(--hover-color);
+  color: white;
+  font-weight: 600;
+}
+
+
+
+/*-----Responsive Design----*/
+@media screen and (min-width: 576px) {
+  /*----sm----*/
+  html{
+      font-size: 12px;
+  }
+}
+@media screen and (min-width: 768px) {
+  /*----md----*/
+  html{
+      font-size: 14px;
+  }
+}
+@media screen and (min-width: 992px) {
+  /*----lg----*/
+  html{
+      font-size: 16px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /*----xl----*/
+  html{
+      font-size: 18px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  /*----xxl----*/
+  html{
+      font-size: 24px;
+  }
+}
+@media screen and (min-width: 1900px) {
+  /*----xxl----*/
+  html{
+      font-size: 32px;
+  }
+}
+

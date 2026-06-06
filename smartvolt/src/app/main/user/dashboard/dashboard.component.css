@@ -1,0 +1,59 @@
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bg_img{
+  position: fixed;
+  width: 60%;
+  right: -15%;
+  top: 15%;
+}
+  .reg_no{
+    text-align: center;
+    margin: 0;
+  }
+  .ev_details{
+    display: flex;
+    align-items: center;
+  }
+  .ev_details .material-icons{
+    font-size: 3rem;
+    opacity: 0.5;
+  }
+  .ev_details .material-icons:nth-child(3){
+    margin-left: auto;
+  }
+  .ev > *{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2.2rem 3rem;
+  }
+  .battery p{
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 2rem;
+  }
+  .est_dist p{
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: .9rem;
+  }
+  .charge_at p{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: .8rem;
+  }
+  .btn-primary{
+    border-radius: 2rem;
+    background-color: var(--ev-green);
+    border: none;
+    font-weight: 700;
+  }
+  .btn-primary:hover{
+    background-color: var(--hover-color);
+  }
+

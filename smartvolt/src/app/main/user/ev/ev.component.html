@@ -1,0 +1,27 @@
+
+<div class="ev_container">
+
+  <div class="bg_img"><img src="../../assets/img/AetherEV.svg" alt="aether ev img"></div>
+
+  <h1>EV</h1>
+  <h4>{{curr_ev.registration_no}}</h4>
+
+  <div class="ev_details">
+    <span class="material-icons" (click)="prev_ev()">navigate_before</span>
+    <div class="ev">
+      <ul>
+        <li>Name: <b>{{curr_ev.ev.ev_name}}</b></li>
+        <li>Model: <b>{{curr_ev.ev.ev_model}}</b></li>
+        <li>Company: <b>{{curr_ev.ev.ev_company}}</b></li>
+        <li>Battery: <b>{{curr_ev.ev.battery}}</b></li>
+        <li>Type: <b>{{curr_ev.ev.ev_type}}</b></li>
+        <li>Mileage: <b>{{curr_ev.ev.ev_mileage}} Km</b></li>
+        <li>Port: <b>{{curr_ev.ev.ev_port}}</b></li>
+        <li>Purchase Date: <b>{{curr_ev.purchase_date | date: "dd-MM-YYYY"}}</b></li>
+      </ul>
+    </div>
+    <span class="material-icons" (click)="next_ev()">navigate_next</span>
+  </div>
+
+</div>
+

@@ -1,0 +1,42 @@
+
+<div class="dashboard_container">
+  <div class="left">
+      <div class="navigation">
+        <a class="smartvolt">Smart<span>Volt</span></a>
+        <ul>
+            <li *ngFor="let in of navLinks ;let i = index" [routerLink] = "access + '/' + navLinks[i]">
+                <span class="material-icons">
+                    {{materialClasses[i]}}
+                </span>
+                <h6>{{navLinks[i]}}</h6>
+            </li>
+        </ul>
+      </div>
+
+      <div class="credits" *ngIf="notAdmin">
+          <h6>credits</h6>
+          <div class="credit_points">
+              <span class="material-icons">
+                  monetization_on
+              </span>
+              <h3>{{credits}}</h3>
+          </div>
+      </div>
+  </div>
+
+  <div class="right">
+    <div class="banner">
+      <div class="name">
+        <h5>Hello,</h5>
+        <h5><b>{{user}}</b></h5>
+      </div>
+      <div class="profile">
+        <h6>{{curr_time | date:'HH:mm'}}</h6>
+        <span class="material-icons notification" (click)="logout()">logout</span>
+        <span class="material-icons profile_pic">account_circle</span>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</div>

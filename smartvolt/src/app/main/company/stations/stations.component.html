@@ -1,0 +1,30 @@
+
+<div class="station_container">
+
+  <div class="bg_img"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+
+  <h1>Station</h1>
+
+  <div class="station_details">
+    <span class="material-icons" (click)="prev_station()">navigate_before</span>
+    <div class="station">
+      <h4>{{curr_station.station_location}}</h4>
+      <div class="card" *ngFor="let evse of curr_station.station_evse">
+        <div class="card-body">
+          <div class="left">
+            <p>EVSE ID: {{evse.evse.evse_id}}</p>
+            <h5>{{evse.evse.evse_name}} - {{evse.evse.evse_model}}</h5>
+            <h6>Manufacturer: {{evse.evse.evse_company}}</h6>
+          </div>
+          <div class="right">
+            <p>Port 1: {{evse.evse.evse_port1.port_name}}</p>
+            <p>Port 2: {{evse.evse.evse_port2.port_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="material-icons" (click)="next_station()">navigate_next</span>
+  </div>
+
+</div>
+

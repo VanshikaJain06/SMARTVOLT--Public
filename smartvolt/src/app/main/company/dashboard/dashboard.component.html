@@ -1,0 +1,33 @@
+
+
+<div class="dashboard">
+
+  <div class="bg_img"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+
+    <div class="evse">
+      <div class="supply">
+        <h2>Average Supply</h2>
+        <p>{{avg_supply}} KW/h</p>
+      </div>
+      <div class="station_metrics">
+        <div class="metrics">
+          <h6>Total Stations</h6>
+          <p>{{total_stations}}</p>
+        </div>
+        <div class="metrics">
+          <h6>Active EVSEs</h6>
+          <p>{{act_evse}}/{{total_evse}}</p>
+        </div>
+        <div class="metrics">
+          <h6>Active Ports</h6>
+          <p>{{act_ports}}/{{total_ports}}</p>
+        </div>
+      </div>
+      <div class="request_info">
+        <p>{{request_info}}</p>
+      </div>
+      <a name="request" id="request" class="btn btn-primary" role="button" [routerLink] = "['../Grid']">{{request}}</a>
+    </div>
+
+</div>
+

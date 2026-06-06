@@ -1,0 +1,109 @@
+
+
+<div class="ev_container">
+  <div class="bg_img" *ngIf="pages[1] || pages[2]"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+  <div class="banner">
+    <h1>{{page_title}}</h1>
+    <button type="button" class="btn btn-primary" (click)="addEV()" *ngIf="pages[0]">Add EV</button>
+  </div>
+
+  <div class="page1" *ngIf="pages[0]">
+    <div class="card" *ngFor="let ev of evs">
+      <div class="card-body">
+        <div class="left">
+          <p>EV ID: {{ev.ev_id}}</p>
+          <h5>{{ev.ev_name}} - {{ev.ev_model}}</h5>
+          <p>Manufacturer: {{ev.ev_company}}</p>
+          <p>{{ev.ev_type}}</p>
+        </div>
+        <div class="right">
+          <div>
+            <h6>Mileage: {{ev.ev_mileage}}km</h6>
+            <h6>Port: {{ev.ev_port.port_name}}</h6>
+            <h6>Battery: {{ev.battery.bat_name}}</h6>
+          </div>
+         <div class="options">
+          <span class="material-icons edit" (click)="update(ev.ev_id)">
+            edit
+          </span>
+          <span class="material-icons delete" (click)="delete(ev.ev_id)">
+            delete
+          </span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" *ngIf="pages[1] || pages[2]" [formGroup]="evForm">
+    <div class="page2_left">
+      <h6 *ngIf="pages[2]">EV ID: {{ev_id}}</h6>
+      <form>
+        <div>
+          <label for="ev_name">EV Name</label>
+          <input type="text" formControlName="ev_name" id="ev_name">
+        </div>
+        <div>
+          <label for="ev_model">Model</label>
+          <input type="text" formControlName="ev_model" id="ev_model">
+        </div>
+        <div>
+          <label for="ev_company">Company</label>
+          <input type="text" formControlName="ev_company" id="ev_company" (keypress)="keyPressAlpha($event)">
+        </div>
+        <div>
+          <label for="ev_type">Type</label>
+          <input type="text" formControlName="ev_type" id="ev_type">
+        </div>
+        <div>
+          <label for="ev_mileage">Mileage</label>
+          <input type="text" formControlName="ev_mileage" id="ev_mileage" (keypress)="keyPressNumbers($event)" (focusout)="validate(evForm.get('ev_mileage').invalid, 'Mileage should be under 199')">
+        </div>
+        <div>
+          <label for="ev_port">Port</label>
+          <select id="ev_port" formControlName="ev_port" (ngModelChange)="showPort($event)">
+            <option *ngFor="let port of ports"  [value]="port.port_id">{{port.port_name}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="bat_id">Battery</label>
+          <select id="bat_id" formControlName="bat_id" (ngModelChange)="showBattery($event)">
+            <option *ngFor="let bat of batteries"  [value]="bat.bat_id">{{bat.bat_name}}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="page2_right">
+      <div class="info_page" *ngIf="info_page[0]">
+        <h3 class="mb-3">Port Info</h3>
+        <ul>
+          <li>Name: <b>{{port.port_name}}</b></li>
+          <li>Type: <b>{{port.port_type}}</b></li>
+          <li>Power Supply: <b>{{port.port_powersupply}}W/Hr</b></li>
+        </ul>
+      </div>
+
+      <div class="info_page" *ngIf="info_page[1]">
+        <h3 class="mb-3">Battery Info</h3>
+        <ul>
+          <li>Name: <b>{{battery.bat_name}}</b></li>
+          <li>Manufacture: <b>{{battery.bat_manufacturer}}</b></li>
+          <li>Capacity: <b>{{battery.bat_capacity}}W</b></li>
+          <li>Type: <b>{{battery.bat_type}}</b></li>
+          <li>Charging Rate: <b>{{battery.bat_chargingrate}}W/min</b></li>
+          <li>Discharging Rate: <b>{{battery.bat_dischargingrate}}W/min</b></li>
+          <li>Hrs per full charge: <b>{{battery.bat_hours}} Hrs</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="button" class="btn btn-primary" (click)="confirmEV(evForm.value)" *ngIf="pages[1]" [disabled]="!evForm.valid">Add</button>
+      <button type="button" class="btn btn-primary" (click)="updateEV(evForm.value)" *ngIf="pages[2]" [disabled]="!evForm.valid">Update</button>
+      <button type="button" class="btn btn-primary btn2" (click)="cancel()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+

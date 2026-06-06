@@ -1,0 +1,84 @@
+
+/*----navbar-----*/
+.nav{
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.smartvolt{
+  margin: 3% 5%;
+}
+.arrow_back{
+  font-size: 1.8rem;
+  margin: 5%;
+}
+
+/*-----content-----*/
+.content_wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20vh;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  h1{
+      font-size: 4.5rem;
+      margin-bottom: 8%;
+  }
+  .login{
+      background: none;
+      border:.2rem solid var(--ev-green);
+      border-radius: 2.6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3% 6%;
+  }
+  .login:hover{
+    border-color: var(--hover-color);
+  }
+  .login:hover, .login:focus, .login:active{
+      background: none;
+  }
+  h3{
+      font-size: 1.3rem;
+      margin-left: 4%;
+      margin-bottom: 0;
+  }
+  .google_logo{
+      width: 13%;
+  }
+
+/*-----Responsive Design----*/
+@media screen and (min-width: 768px) {
+  /*----md----*/
+  .left{
+      margin-top: 7%;
+      margin-left: -3%;
+  }
+  .right{
+      margin-left: 6%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  /*----xxl----*/
+  .login{
+      width: 80%;
+  }
+}
+@media screen and (min-width: 1900px) {
+  /*----xxl----*/
+  .left{
+      width: 80%;
+      margin:0;
+  }
+  .login{
+      width: 120%;
+  }
+}

@@ -1,0 +1,53 @@
+.battery_container h1{
+  margin: 1.2rem 0 0;
+}
+.battery_details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.battery_container h4{
+  text-align: center;
+}
+.bg_img{
+  position: fixed;
+  width: 40%;
+  right: 2%;
+  top: 2%;
+}
+.battery_details .material-icons{
+  font-size: 3rem;
+  opacity: 0.5;
+}
+.battery_details .material-icons:nth-child(3){
+  margin-left: auto;
+}
+.battery_left ul{
+  padding: 0;
+}
+.battery_left li{
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+.battery_right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 45vh;
+}
+.btn-primary{
+  border-radius: 2rem;
+  background-color: var(--ev-green);
+  border: none;
+  font-weight: 700;
+}
+.btn-primary:hover{
+  background-color: var(--hover-color);
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  font-size: 1.5rem;
+}

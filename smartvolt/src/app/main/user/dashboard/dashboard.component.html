@@ -1,0 +1,31 @@
+
+<div class="dashboard">
+
+  <div class="bg_img"><img src="../../assets/img/AetherEV.svg" alt="aether ev img"></div>
+
+  <div class="reg_no">
+    <h4>{{ev_reg_no}}</h4>
+  </div>
+
+  <div class="ev_details">
+    <span class="material-icons" (click)="prev_ev()">navigate_before</span>
+    <div class="ev">
+      <div class="battery">
+        <h2>Battery</h2>
+        <p class="ev_battery">{{ev_bat}}%</p>
+      </div>
+      <div class="est_dist">
+        <h6>Estimated Distance</h6>
+        <p class="ev_dist">{{ev_dist}}Km</p>
+      </div>
+      <div class="charge_at">
+        <h6>Charge at</h6>
+        <p class="rec_station">{{recommended_station}}</p>
+      </div>
+      <a name="booking" id="booking" class="btn btn-primary" role="button" [routerLink] = "['../Booking']">{{booking}}</a>
+    </div>
+    <span class="material-icons" (click)="next_ev()">navigate_next</span>
+  </div>
+
+</div>
+

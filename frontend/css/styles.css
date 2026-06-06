@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    color: #7f7f7f;
+}
+
+img{
+    width: 100%;
+}
+.material-icons{
+    color: #000000;
+}
+.material-icons:hover{
+    color:blue;
+}
+
+/*----navbar-----*/
+.nav{
+    justify-content: space-between;
+    align-items: center;
+}
+.smartvolt{
+    color: #000000;
+    font-size: 2rem;
+    margin: 3% 5%;
+}
+.arrow_back{
+    font-size: 1.8rem;
+    margin: 5%;
+}
+
+/*-----content-----*/
+.content_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20vh;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    h1{
+        font-size: 4.5rem;
+        margin-bottom: 8%;
+    }
+    .login{
+        background: none;
+        border:.2rem solid #61d472;
+        border-radius: 2.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3% 6%;
+    }
+    .login:hover, .login:focus, .login:active{
+        background: none;
+    }
+    h3{
+        font-size: 1.3rem;
+        margin-left: 4%;
+        margin-bottom: 0;
+    }
+    .google_logo{
+        width: 13%;
+    }
+
+/*-----Responsive Design----*/
+@media screen and (min-width: 576px) {
+    /*----sm----*/
+    html{
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 768px) {
+    /*----md----*/
+    html{
+        font-size: 14px;
+    }
+    .left{
+        margin-top: 7%;
+        margin-left: -3%;
+    }
+    .right{
+        margin-left: 6%;
+    }
+}
+@media screen and (min-width: 992px) {
+    /*----lg----*/
+    html{
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    /*----xl----*/
+    html{
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    /*----xxl----*/
+    html{
+        font-size: 24px;
+    }
+    .login{
+        width: 80%;
+    }
+}
+@media screen and (min-width: 1900px) {
+    /*----xxl----*/
+    html{
+        font-size: 32px;
+    }
+    .left{
+        width: 80%;
+        margin:0;
+    }
+    .login{
+        width: 120%;
+    }
+}

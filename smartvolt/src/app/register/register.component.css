@@ -1,0 +1,50 @@
+
+/*----navbar-----*/
+.nav{
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.smartvolt{
+  margin: 3% 5%;
+}
+.arrow_back{
+  font-size: 1.8rem;
+  margin: 5%;
+}
+/*-----content-----*/
+.content_wrapper, .page1, .page2, .page3{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content_wrapper h1{
+  font-size: 3rem;
+}
+form label{
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin: 1rem;
+}
+
+.btn-primary{
+  border-radius: 2rem;
+  background-color: var(--ev-green);
+  border: none;
+  font-weight: 700;
+  width: 80%;
+  margin: .5rem 1rem;
+}
+.btn-primary:hover{
+  cursor: pointer;
+  opacity: .8;
+}
+
+input{
+  margin: 1rem;
+  border: none;
+  border-bottom: .1rem solid var(--ev-green);
+}
+
+

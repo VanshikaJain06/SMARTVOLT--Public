@@ -1,0 +1,30 @@
+
+/*----navbar-----*/
+.nav{
+  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.smartvolt{
+  margin: 3% 5%;
+}
+.arrow_back{
+  font-size: 1.8rem;
+  margin: 5%;
+}
+
+/*-----content-----*/
+.content_wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20vh;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

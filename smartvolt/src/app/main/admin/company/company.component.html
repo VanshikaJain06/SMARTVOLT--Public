@@ -1,0 +1,65 @@
+
+
+<div class="com_container">
+  <div class="bg_img" *ngIf="pages[1] || pages[2]"><img src="../../assets/img/teslaEVSE.svg" alt="aether ev img"></div>
+  <div class="banner">
+    <h1>{{page_title}}</h1>
+    <button type="button" class="btn btn-primary" (click)="addCompany()" *ngIf="pages[0]">Add Company</button>
+  </div>
+
+  <div class="page1" *ngIf="pages[0]">
+    <div class="card" *ngFor="let com of companies">
+      <div class="card-body">
+        <div class="left">
+          <p>Company ID: {{com.com_id}}</p>
+          <h5>{{com.com_name}}</h5>
+          <p>{{com.com_phone}}</p>
+          <p>{{com.com_email}}</p>
+          <p class="card-text">{{com.com_address}}</p>
+        </div>
+        <div class="right">
+          <h5>Credits {{com.com_credits}}</h5>
+          <div class="options">
+            <span class="material-icons edit" (click)="update(com.com_id)">
+              edit
+            </span>
+            <span class="material-icons delete" (click)="delete(com.com_id)">
+              delete
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" *ngIf="pages[1] || pages[2]" [formGroup]="companyForm">
+    <h4 *ngIf="pages[2]">Company ID: {{com_id}}</h4>
+    <form>
+      <div>
+        <label for="com_name">Company Name</label>
+        <input type="text" formControlName="com_name" id="com_name" (keypress)="keyPressAlpha($event)">
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="text" formControlName="com_phone" id="phone" (keypress)="keyPressNumbers($event)" (focusout)="validate(companyForm.get('com_phone').invalid, 'Invalid phone number')">
+        <label for="email">Email</label>
+        <input type="text" formControlName="com_email" id="email" (focusout)="validate(companyForm.get('com_email').invalid, 'Invalid email')">
+      </div>
+      <div class="d-flex address">
+        <label for="address">Address</label>
+        <input type="text" formControlName="com_address" id="address">
+      </div>
+      <div>
+        <label for="com_credits">Credits</label>
+        <input type="text" formControlName="com_credits" id="com_credits" (keypress)="keyPressNumbers($event)" (focusout)="validate(companyForm.get('com_credits').invalid, 'Credit should be under 999')">
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn btn-primary" (click)="confirmCompany(companyForm.value)" *ngIf="pages[1]" [disabled]="!companyForm.valid">Add</button>
+        <button type="button" class="btn btn-primary" (click)="updateCompany(companyForm.value)" *ngIf="pages[2]" [disabled]="!companyForm.valid">Update</button>
+        <button type="button" class="btn btn-primary btn2" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
